@@ -11,7 +11,6 @@ class FileSplitterApp:
         self.root.geometry("450x460")
         self.root.resizable(False, False)
 
-        # Icon setup (icon.png must exist)
         try:
             self.root.iconphoto(False, tk.PhotoImage(file="icon.png"))
         except Exception:
@@ -20,7 +19,6 @@ class FileSplitterApp:
         self.df = None
         self.file_path = ""
 
-        # Logo
         try:
             logo = Image.open("icon.png").resize((50, 50))
             self.logo_img = ImageTk.PhotoImage(logo)
@@ -28,39 +26,31 @@ class FileSplitterApp:
         except Exception:
             pass
 
-        # Title
         tk.Label(root, text="Spreadsheet Splitter", font=("Helvetica", 16, "bold")).pack()
 
-        # File selector
         tk.Button(root, text="Select Excel or CSV File", command=self.select_file,
                   height=2, width=30, font=("Segoe UI", 10, "bold")).pack(pady=10)
 
-        # Column dropdown
         tk.Label(root, text="Column to Split By:", font=("Segoe UI", 10)).pack()
         self.column_dropdown = ttk.Combobox(root, state="readonly", width=40)
         self.column_dropdown.pack(pady=5)
 
-        # Export format selector
         tk.Label(root, text="Select Export Format:", font=("Segoe UI", 10)).pack()
         self.format_var = tk.StringVar(value="xlsx")
         self.format_dropdown = ttk.Combobox(root, textvariable=self.format_var,
                                             values=["xlsx", "csv"], state="readonly", width=10)
         self.format_dropdown.pack(pady=5)
 
-        # Progress bar
         self.progress = ttk.Progressbar(root, orient="horizontal", mode="determinate", length=300)
         self.progress.pack(pady=10)
 
-        # Split button
         tk.Button(root, text="Split File", command=self.split_file,
                   height=2, width=20, font=("Segoe UI", 10, "bold"),
                   bg="#1d72e8", fg="white").pack(pady=10)
 
-        # Status label
         self.status_label = tk.Label(root, text="", font=("Segoe UI", 10), fg="gray")
         self.status_label.pack()
 
-        # Footer credit with clickable GitHub link
         credit_frame = tk.Frame(root)
         credit_frame.pack(pady=(10, 5))
         tk.Label(credit_frame, text="By ", font=("Segoe UI", 9)).pack(side=tk.LEFT)
