@@ -14,7 +14,6 @@ CSV Splitter is a simple yet powerful Python GUI tool to split a large Excel or 
 - ✅ Progress bar to track export status
 - ✅ Exports files into a clean `Split_Output` folder
 - ✅ Professional-looking user interface
-- ✅ Clickable GitHub credit in app footer
 
 ## 📦 Installation
 
